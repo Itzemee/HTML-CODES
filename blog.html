@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog — Relearning</title>
+  <link rel="stylesheet" href="mine.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="brand" href="index.html">Relearning</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content">
+    <h1>Blog</h1>
+    <p>Welcome to the blog. Here are a few sample posts to get you started.</p>
+    <article>
+      <h2>Getting Started</h2>
+      <p>Notes and reflections on the early stages of relearning. Keep short, link to resources, and iterate.</p>
+    </article>
+    <article>
+      <h2>Small Wins</h2>
+      <p>Record small daily wins — they compound. This simple site captures them.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Relearning Project</p>
+  </footer>
+
+  <script>
+    (function(){
+      const btn = document.querySelector('.nav-toggle');
+      const navList = document.querySelector('.nav-list');
+      if (!btn || !navList) return;
+      btn.addEventListener('click', () => navList.classList.toggle('open'));
+    })();
+  </script>
+</body>
+</html>

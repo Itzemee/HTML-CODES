@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form.com</title>
+    <style>
+        a{
+            display: block;
+            text-decoration: none;
+            color: black;
+            border: 2px solid brown ;
+            margin: 5px;
+        }
+        table td{
+            padding: 5px;
+            background-color: antiquewhite;
+        }
+        fieldset, legend, form, input, button{
+            width: fit-content;
+            margin: auto;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        button{
+            background-color: blue;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        input{
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid gray;
+            width: 250px;
+            
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            
+        }
+    </style>
+</head>
+<body>
+    <a href="C:\Users\Dell\Desktop\HTML CODES\contact.html">Contact Us</a>
+    <a href="C:\Users\Dell\Desktop\HTML CODES\blog.html">Get to know our blog</a>
+    <table border="1 ">
+        <th>No.</th>
+        <th>Name</th>
+        <th>REG NO</th>
+        <th>Sex</th>
+        <tr><td>1.</td> <td>Mee</td> <td>2zz </td> <td>F</td></tr>
+        <tr> <td>2.</td> <td>Killua</td> <td>2xx</td> <td>M</td></tr>
+        <tr><td>3.</td> <td>AY</td> <td>2yy</td> <td>   M</td></tr>
+    </table> <br><br><br>
+
+    <fieldset>
+        <legend><h2> Register for the FSEN 101 classes</h2></legend>
+            <form action="get">
+                <label >First Name</label> <br>
+                <input type="text" name="firstname" placeholder="Enter your first name" required> <br><br>
+                <label >Last Name</label> <br>
+                <input type="text" name="lastname" placeholder="Enter your last name" required> <br><br>
+ k               <label>Email</label><br>
+                <input type="email" name="email" placeholder="Enter your email" required> <br><br>
+                <label>Matriculation Number</label><br>
+                <input type="text" name="Matric.no" placeholder="Enter your matriculation Number" required><br><br>
+                <button type="submit" onclick="alert('your form has been submitted sucesfully')">Submit</button>
+            </form>
+        </fieldset>
+        <script> 
+
+        let object={message:"hello world", name:"ay", age: 20};
+          for (const key in object) {
+            if (!Object.hasOwn(object, key)) continue;
+            
+            console.log(object[key]);
+          }
+        </script>
+</body>
+</html>

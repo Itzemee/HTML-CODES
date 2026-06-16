@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Relearning</title>
+  <link rel="stylesheet" href="mine.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="brand" href="index.html">Relearning</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content">
+    <h1>About This Project</h1>
+    <p>Relearning is a simple personal project to capture ideas, mistakes, and small wins while re-acquiring skills. This demo shows a responsive navigation bar, accessible focus styles, and a minimal page structure.</p>
+    <h2>Goals</h2>
+    <ul>
+      <li>Keep content readable and accessible</li>
+      <li>Provide a responsive navigation experience</li>
+      <li>Use a single shared stylesheet for consistency</li>
+    </ul>
+  </main>
+  
+  <footer class="site-footer">
+    <p>&copy; 2025 Relearning Project</p>
+  </footer>
+     
+  <script>
+    (function(){
+      const btn = document.querySelector('.nav-toggle');
+      const navList = document.querySelector('.nav-list');
+      if (!btn || !navList) return;
+      btn.addEventListener('click', () => navList.classList.toggle('open'));
+    })();
+  </script>
+</body>
+</html>

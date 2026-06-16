@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home — Relearning</title>
+  <link rel="stylesheet" href="mine.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="brand" href="index.html">Relearning</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Relearn. Rebuild. Remember.</h1>
+        <p class="lead">Short, focused practice beats long, unfocused effort. Capture small wins and iterate — this site helps you document progress and ideas as you relearn.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="blog.html">Read the Blog</a>
+          <a class="btn btn-outline" href="about.html">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-media" aria-hidden="true">
+        <img src="C:\Users\Dell\Pictures\230875.jpg" alt="" />
+      </div>
+    </section>
+
+    <section class="content features">
+      <h2>Features</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">🧭</div>
+          <h3>Plan</h3>
+          <p>Create focused goals and small checkpoints so progress is measurable.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">🛠️</div>
+          <h3>Practice</h3>
+          <p>Practice deliberately with short exercises and document the results.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">📝</div>
+          <h3>Reflect</h3>
+          <p>Record what worked, what didn't, and the next small step.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+<script src="001.js"></script>
+  <footer class="site-footer">
+    <p>&copy; 2025 Relearning Project</p>
+  </footer>
+
+  <script>
+    (function(){
+      const btn = document.querySelector('.nav-toggle');
+      const navList = document.querySelector('.nav-list');
+      if (!btn || !navList) return;
+      btn.addEventListener('click', () => navList.classList.toggle('open'));
+    })();
+  </script>
+</body>
+</html>
