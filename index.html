@@ -1,75 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home — Relearning</title>
-  <link rel="stylesheet" href="mine.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <nav class="navbar">
-      <a class="brand" href="index.html">Relearning</a>
-      <button class="nav-toggle" aria-label="Toggle navigation">
-        <span class="hamburger"></span>
-      </button>
-      <ul class="nav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="hero-inner">
-        <h1>Relearn. Rebuild. Remember.</h1>
-        <p class="lead">Short, focused practice beats long, unfocused effort. Capture small wins and iterate — this site helps you document progress and ideas as you relearn.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="blog.html">Read the Blog</a>
-          <a class="btn btn-outline" href="about.html">Learn More</a>
+    <div id="app">
+        <h1>📝 TaskMaster</h1>
+        
+        <!-- STATS SECTION -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-label">Score</div>
+                <div class="stat-value">{{ score }}</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Streak</div>
+                <div class="stat-value">{{ streak }} 🔥</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Today</div>
+                <div class="stat-value">{{ formatTime(totalSecondsToday) }}</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Tasks</div>
+                <div class="stat-value">{{ completedTasks }}/{{ totalTasks }}</div>
+            </div>
         </div>
-      </div>
-      <div class="hero-media" aria-hidden="true">
-        <img src="C:\Users\Dell\Pictures\230875.jpg" alt="" />
-      </div>
-    </section>
 
-    <section class="content features">
-      <h2>Features</h2>
-      <div class="cards">
-        <article class="card">
-          <div class="card-icon">🧭</div>
-          <h3>Plan</h3>
-          <p>Create focused goals and small checkpoints so progress is measurable.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">🛠️</div>
-          <h3>Practice</h3>
-          <p>Practice deliberately with short exercises and document the results.</p>
-        </article>
-        <article class="card">
-          <div class="card-icon">📝</div>
-          <h3>Reflect</h3>
-          <p>Record what worked, what didn't, and the next small step.</p>
-        </article>
-      </div>
-    </section>
-  </main>
-<script src="001.js"></script>
-  <footer class="site-footer">
-    <p>&copy; 2025 Relearning Project</p>
-  </footer>
+        <div class="container">
+            <!-- FOCUS SECTION -->
+            <div class="focus-section">
+                <h2>⏱️ Focus Timer</h2>
+                <div class="timer-display">{{ formatTime(currentSession) }}</div>
+                <div class="focus-info">
+                    <p v-if="isFocusing" style="color: green;">🟢 Currently Focusing</p>
+                    <p v-else style="color: gray;">⚫ Not Focusing</p>
+                </div>
+                <div class="focus-buttons">
+                    <button @click="startFocus" v-if="!isFocusing" class="btn-start">Start Focus</button>
+                    <button @click="stopFocus" v-if="isFocusing" class="btn-stop">Stop Focus</button>
+                </div>
+            </div>
 
-  <script>
-    (function(){
-      const btn = document.querySelector('.nav-toggle');
-      const navList = document.querySelector('.nav-list');
-      if (!btn || !navList) return;
-      btn.addEventListener('click', () => navList.classList.toggle('open'));
-    })();
-  </script>
+            <!-- TASKS SECTION -->
+            <div class="tasks-section">
+                <h2>📋 Tasks</h2>
+                <div class="task-input-group">
+                    <input v-model="newTask" @keyup.enter="addTask" placeholder="Add a new task..." type="text">
+                    <button @click="addTask" class="btn-add">Add</button>
+                </div>
+                
+                <ul v-if="tasks.length > 0" class="tasks-list">
+                    <li v-for="task in tasks" :key="task.id" :class="{ completed: task.completed }">
+                        <input type="checkbox" v-model="task.completed" @change="toggleTask(task.id, task.completed)">
+                        <span v-if="!task.editing" class="task-title">{{ task.title }}</span>
+                        <input v-else v-model="task.title" @keyup.enter="saveEdit(task.id)" @blur="saveEdit(task.id)" type="text" class="task-edit-input" autofocus>
+                        
+                        <div class="task-actions">
+                            <button @click="toggleEdit(task)" class="btn-small" :class="{ 'btn-save': task.editing }">
+                                {{ task.editing ? '✓' : '✏️' }}
+                            </button>
+                            <button @click="deleteTask(task.id)" class="btn-small btn-delete">🗑️</button>
+                        </div>
+                    </li>
+                </ul>
+                <p v-else class="no-tasks">No tasks yet. Add one to get started!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
